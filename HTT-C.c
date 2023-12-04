@@ -12,18 +12,19 @@ int count = 0;
 void add(struct CD cdList[], int *size){
     struct CD newCD;
     printf("Nhap ten dia CD: ");
-    scanf(" %d", newCD.name);
+    scanf("%s", newCD.name);
     printf("Nhap truong do CD: ");
-    scanf(" %d", newCD.duration);
+    scanf("%f", &newCD.duration);
     printf("Nhap noi dung dia CD: ");
-    scanf(" %d", newCD.content);
+    scanf("%s", newCD.content);
     cdList[count++] = newCD;
-    printf("dia CD da duoc them vao.\n");
+    printf("Dia CD da duoc them vao.\n");
 }
+
 void update(struct CD cdList[], int *size){
     char find[100];
     printf("Nhap ten dia CD muon thay doi: ");
-    scanf(" %d", find);
+    scanf("%s", find);
     int index = 1;
     for (int i = 0; i < count; i++){
         if (strcmp(cdList[i].name, find) == 0){
@@ -34,19 +35,21 @@ void update(struct CD cdList[], int *size){
     if (index != 1){
         printf("Nhap thong tin moi cho dia CD:\n");
         printf("Nhap ten dia CD: ");
-        scanf(" %d", cdList[index].name);
+        scanf("%s", cdList[index].name);
         printf("Nhap truong do CD: ");
-    	scanf(" %d", cdList[index].duration);
+        scanf("%f", &cdList[index].duration);
         printf("Nhap noi dung dia CD: ");
-        scanf(" %d", cdList[index].content);
+        scanf("%s", cdList[index].content);
     } else{
-        printf("khong tim thay\n");
+        printf("Khong tim thay\n");
     }
 }
+
 int main(){
 	
 	int choice;
 	int size = 2;
+	int search;
 	struct CD cd1 = {1,"Ho Xuan Huong",3.14,"Ca nhac",1};
 	struct CD cd2 = {2,"Ho Xuan Hieu",5.14,"Hai kich",1};
 	struct CD cdList[] = {cd1,cd2};
@@ -125,19 +128,20 @@ int main(){
                 printf("Sap xep xong\n");
                 break;
             case 7:
-            	int search;
-            	printf("Nhap id muon tim kiem: ");
-            	scanf("%d",&search);
-            	for(int i=0;i<size;i++){
-            		if (find==cdList[i].id){
-            			printf("%d  ",cdList[i].id);
-						printf("%s  ",cdList[i].name);
-						printf("%d  ",cdList[i].duration);
-						printf("%s  ",cdList[i].content);
-						printf("%d  ",cdList[i].status);
-					}
-				}
-				break;
+    			
+    				printf("Nhap id muon tim kiem: ");
+    				scanf("%d", &search);
+    				for(int i = 0; i < size; i++){
+        				if (search == cdList[i].id){
+            			printf("%d  ", cdList[i].id);
+           				printf("%s  ", cdList[i].name);
+            			printf("%f  ", cdList[i].duration);
+            			printf("%s  ", cdList[i].content);
+            			printf("%d  ", cdList[i].status);
+            			printf("\n");
+        				}
+    				}
+    				break;
 			case 8:
 				return 0;
 				break;
